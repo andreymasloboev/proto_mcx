@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.20)
 
-project (HTTP_MCX VERSION 0.1 DESCRIPTION "proto MCX")
+project (poco_web VERSION 0.1 DESCRIPTION "proto web POCO")
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -24,13 +24,14 @@ endif()
 find_package(Poco REQUIRED COMPONENTS Foundation Net Util)
 
 set(HDR_FILES
+    include/resource.hpp
     include/handlers.hpp
-    include/mother_handler.hpp
+    include/resource_handler.hpp
 )
 
 set(SRC_FILES
     src/handlers.cpp
-    src/mother_handler.cpp
+    src/resource_handler.cpp
 )
 
 set(SRC_MAIN_FILES

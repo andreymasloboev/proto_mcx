@@ -1,18 +1,14 @@
 #include <Poco/Net/HTTPServerRequest.h>
 
-#include <mother_handler.hpp>
+#include <resource_handler.hpp>
 #include <handlers.hpp>
 
-CommonRequestHandler::CommonRequestHandler()
+Poco::Net::HTTPRequestHandler *CommonRequestHandler::createRequestHandler(const Poco::Net::HTTPServerRequest &request)
 {
-}
-
-Poco::Net::HTTPRequestHandler *CommonRequestHandler::createRequestHandler(
-    const Poco::Net::HTTPServerRequest &request)
-{
-    if (request.getURI() == "/mother/")
+    if (request.getURI() == "/status")
     {
-        return new MotherHandler();
+        return new ResourceHandler(resource_);
     }
-    return nullptr; // Does everybody use C++11?
+
+    return nullptr;
 }

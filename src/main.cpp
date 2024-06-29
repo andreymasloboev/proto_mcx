@@ -12,11 +12,9 @@ class Listener : public Poco::Util::ServerApplication
         params->setMaxQueued(50);
         params->setMaxThreads(4);
 
-        Poco::Net::ServerSocket socket(9001); // argument is a port
+        Poco::Net::ServerSocket socket(9001);
 
-        Poco::Net::HTTPServer server(new CommonRequestHandler(),
-                                     socket,
-                                     params);
+        Poco::Net::HTTPServer server(new CommonRequestHandler(), socket, params);
 
         server.start();
         waitForTerminationRequest();
